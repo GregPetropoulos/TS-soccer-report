@@ -1,11 +1,10 @@
 "use strict";
 Object.defineProperty(exports, "__esModule", { value: true });
-// *Soccer Stats App with TS
-const ConsoleReports_1 = require("./reportTargets/ConsoleReports");
 const WinsAnalysis_1 = require("./analyzers/WinsAnalysis");
 const Summary_1 = require("./Summary");
 const MatchReader_1 = require("./MatchReader");
 const CsvFileReader_1 = require("./CsvFileReader");
+const HtmlReports_1 = require("./reportTargets/HtmlReports");
 /*
 ======================================
 ======================================
@@ -28,5 +27,11 @@ CLASS COMPOSITION(DELEGATION) WITH INTERFACES FOR BETTER FLEXIBILITY
 =====================================
 =====================================
 */
-const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new ConsoleReports_1.ConsoleReports());
+// Logs the team and wins to the console
+// const summary = new Summary(
+//   new WinsAnalysis('Man United'),
+//   new ConsoleReports()
+// );
+// Making an html file with the team and wins
+const summary = new Summary_1.Summary(new WinsAnalysis_1.WinsAnalysis('Man United'), new HtmlReports_1.HtmlReports());
 summary.buildAndPrintReport(matchReader.matches);
